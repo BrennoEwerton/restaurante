@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Lista de Categoria</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Listar categoria</h1>        
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria['nome'] }}</td>
+                    <td>{{ categoria['descricao'] }}</td>
+                    <td><a href="{{ url_for('editar_categoria', id=categoria['id']) }}">Editar</a></td>
+                    <td><a href="{{ url_for('excluir_categoria', id=categoria['id']) }}">Excluir</a></td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botão de retorno para outra página -->
+        <a href="{{ url_for('admin_panel') }}">Voltar</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Excluir Prato</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Excluir Prato</h1>
+    
+        <p>Tem certeza de que deseja excluir o prato "{{ prato['nome'] }}"?</p>
+        
+        <form method="POST">
+            <button type="submit">Confirmar Exclusão</button>
+        </form>
+
+        <!-- Botão de retorno para outra página -->
+        <a href="{{ url_for('listar_pratos') }}">Cancelar</a>
+    </div>
+</body>
+</html>

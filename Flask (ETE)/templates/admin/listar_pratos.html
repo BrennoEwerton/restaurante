@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Lista de Pratos</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Listar Pratos</h1>        
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prato in pratos %}
+                <tr>
+                    <td>{{ prato['nome'] }}</td>
+                    <td>{{ prato['descricao'] }}</td>
+                    <td>{{ prato['categoria_id'] }}</td>  <!-- Aqui você pode ajustar para exibir o nome da categoria -->
+                    <td><a href="{{ url_for('editar_prato', id=prato['id']) }}">Editar</a></td>
+                    <td><a href="{{ url_for('excluir_prato', id=prato['id']) }}">Excluir</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botão de retorno para outra página -->
+        <a href="{{ url_for('admin_panel') }}">Voltar</a>
+    </div>
+</body>
+</html>
